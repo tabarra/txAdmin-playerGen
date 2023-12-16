@@ -184,10 +184,10 @@ function ControlActions() {
                     <span>Drop 100</span>
                 )}
             </button>
-            <button className="btn btn-outline" onClick={() => { setMassivePlayerlist(1000) }}>Set 1k players</button>
+            {/* <button className="btn btn-outline" onClick={() => { setMassivePlayerlist(1000) }}>Set 1k players</button>
             <button className="btn btn-outline" onClick={() => { setMassivePlayerlist(10000) }}>Set 10k players</button>
             <button className="btn btn-outline" onClick={() => { setMassivePlayerlist(50000) }}>Set 50k players</button>
-            <button className="btn btn-outline" onClick={() => { setMassivePlayerlist(100000) }}>Set 100k players</button>
+            <button className="btn btn-outline" onClick={() => { setMassivePlayerlist(100000) }}>Set 100k players</button> */}
         </div>
     )
 }

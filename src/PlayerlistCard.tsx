@@ -6,11 +6,11 @@ import { useMemo, useRef, useState } from "react";
 
 function PlayerlistItem({ id, name }: { id: number, name: string }) {
     return (
-        <div className="w-full text-left">
+        <div className="w-full overflow-clip whitespace-nowrap text-ellipsis">
             <span
                 className="font-mono text-slate-600 text-right plistPlId inline-block mr-2"
             >{id}</span>
-            <span className="overflow-hidden max-w-full">{name}</span>
+            {name}
         </div>
     )
 }
@@ -97,10 +97,7 @@ export default function PlayerlistCard() {
                 <style>
                     {injectedStyle}
                 </style>
-                <div className="w-full p-4 pt-0 overflow-y-scroll h-full max-h-[850px]" ref={parentRef}>
-                    {/* {playerlist.map((player) => (
-                        <PlayerlistItem key={player.id} id={player.id} name={player.name} />
-                    ))} */}
+                <div className="w-full p-4 pt-0 overflow-y-scroll h-full max-h-[782px]" ref={parentRef}>
                     <div
                         style={{
                             height: `${rowVirtualizer.getTotalSize()}px`,
