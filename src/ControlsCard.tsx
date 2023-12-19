@@ -121,67 +121,71 @@ function ControlActions() {
     const resetPlayerlist = useResetPlayerlist();
     const { timeEngineConfig, toggleRunning, setSpeed } = useSetTimeEngine();
     const { bulkDrop, bulkJoin, setGiantList, dropRandomPlayer, joinRandomPlayer } = usePlayerlist();
-    const [isBulkDropping, setIsBulkDropping] = useState(false);
-    const [isBulkJoining, setIsBulkJoining] = useState(false);
+    const [isBulkOperationRunning, setIsBulkOperationRunning] = useState(false);
 
-    const doBulkDrop = async () => {
-        setIsBulkDropping(true);
-        await bulkDrop(100);
-        setIsBulkDropping(false);
+    const doBulkOp = async (op: 'drop' | 'join', num: number) => {
+        setIsBulkOperationRunning(true);
+        if(op === 'drop') {
+            await bulkDrop(num);
+        } else {
+            await bulkJoin(num);
+        }
+        setIsBulkOperationRunning(false);
     }
 
-    const doBulkJoin = async () => {
-        setIsBulkJoining(true);
-        await bulkJoin(100);
-        setIsBulkJoining(false);
-    }
-
-    const setMassivePlayerlist = (num: number) => {
-        setGiantList(num);
-    }
 
     return (
         <div className="grid grid-cols-2 gap-2">
-            {/* <span className="loading loading-spinner loading-sm"></span> */}
+            <button className="btn btn-outline btn-warning" onClick={resetPlayerlist}>RESET</button>
             {timeEngineConfig.running ? (
                 <button className="btn btn-outline btn-error" onClick={toggleRunning}>STOP</button>
             ) : (
                 <button className="btn btn-outline btn-success" onClick={toggleRunning}>START</button>
             )}
-            <button className="btn btn-outline btn-warning" onClick={resetPlayerlist}>RESET</button>
-            <button
-                className="btn btn-outline"
-                onClick={joinRandomPlayer}
-            >
-                Join 1
-            </button>
             <button
                 className="btn btn-outline"
                 onClick={dropRandomPlayer}
             >
                 Drop 1
             </button>
+            <button
+                className="btn btn-outline"
+                onClick={joinRandomPlayer}
+            >
+                Join 1
+            </button>
             
             <button
                 className="btn btn-outline"
-                onClick={doBulkJoin}
-                disabled={isBulkJoining}
+                onClick={() => {doBulkOp('drop', 100)}}
+                disabled={isBulkOperationRunning}
             >
-                {isBulkJoining ? (
+                {isBulkOperationRunning ? (
+                    <span className="loading loading-spinner loading-sm"></span>
+                ) : (
+                    <span>Drop 100</span>
+                )}
+            </button>
+            <button
+                className="btn btn-outline"
+                onClick={() => {doBulkOp('join', 100)}}
+                disabled={isBulkOperationRunning}
+            >
+                {isBulkOperationRunning ? (
                     <span className="loading loading-spinner loading-sm"></span>
                 ) : (
                     <span>Join 100</span>
                 )}
             </button>
             <button
-                className="btn btn-outline"
-                onClick={doBulkDrop}
-                disabled={isBulkDropping}
+                className="btn btn-outline btn-secondary col-span-2"
+                onClick={() => {doBulkOp('join', 1000)}}
+                disabled={isBulkOperationRunning}
             >
-                {isBulkDropping ? (
+                {isBulkOperationRunning ? (
                     <span className="loading loading-spinner loading-sm"></span>
                 ) : (
-                    <span>Drop 100</span>
+                    <span>Slowly Join 1k</span>
                 )}
             </button>
             {/* <button className="btn btn-outline" onClick={() => { setMassivePlayerlist(1000) }}>Set 1k players</button>
