@@ -97,7 +97,7 @@ export default function PlayerlistCard() {
                 <style>
                     {injectedStyle}
                 </style>
-                <div className="w-full p-4 pt-0 overflow-y-scroll h-full max-h-[782px]" ref={parentRef}>
+                <div className="w-full p-4 pt-0 overflow-y-scroll h-full max-h-[830px]" ref={parentRef}>
                     <div
                         style={{
                             height: `${rowVirtualizer.getTotalSize()}px`,

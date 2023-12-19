@@ -3,6 +3,8 @@
 This project allows you to inject fake players in [txAdmin](https://github.com/tabarra/txAdmin) for purposes of testing stuff.  
 It was created as a dev tool while migrating the txAdmin interface to React in the v7 update, and it is published as a separate package not to pollute the main repo.  
 Try it out: https://txadmin-playergen-tabarra.vercel.app/  
+  
+> **NOTE: Keep in mind this project only had 2~3 days of time budget so the code is a bit messy.**
 
 ![screenshot](docs_screenshot.png)
   
@@ -12,8 +14,6 @@ Try it out: https://txadmin-playergen-tabarra.vercel.app/
 - There is no error handling for failed API calls, but that doesn't really matter in this use case.
 - Due to the item above, if the speed is at the max it is expected some small desync issues with txAdmin.
 - I used this opportunity to test [DaisyUI](https://daisyui.com/), so the theme of course doesn't match txAdmin.
-  
-> **NOTE: Keep in mind this project only had 2~3 days of time budget so the code is a bit messy.**
 
 ## Future Work (TODO)
 As needed during the txAdmin development, the changes below might be welcomed:
