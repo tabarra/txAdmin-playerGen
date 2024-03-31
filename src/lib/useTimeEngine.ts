@@ -6,8 +6,8 @@ export type TimeEngineConfigType = {
 }
 
 export const timeEngineConfigAtom = atom({
-    running: true,
-    speed: 0.5,
+    running: false,
+    speed: 1.5,
 });
 
 export const useSetTimeEngine = () => {

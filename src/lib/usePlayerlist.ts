@@ -29,7 +29,7 @@ export type PlayerType = {
 
 export const playerlistConfigAtom = atom({
     beep: true,
-    joinLeaveBias: 0.5,
+    joinLeaveBias: 0.7,
     minPlayers: 16,
     maxPlayers: 256,
 });
