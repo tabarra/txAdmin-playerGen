@@ -3,6 +3,7 @@ import { atom, useAtom, useAtomValue, useSetAtom } from 'jotai';
 import joinAudio from "../assets/join.mp3";
 import leaveAudio from "../assets/leave.mp3";
 import { useApi } from "./useApi";
+import { getRandomDropReason } from "./randomDropReasons";
 
 
 const sndJoin = new Audio(joinAudio);
@@ -90,7 +91,7 @@ export const usePlayerlist = () => {
                 type: 'txAdminPlayerlistEvent',
                 event: 'playerDropped',
                 id: prev[randomIndex].id,
-                reason: 'tester',
+                reason: getRandomDropReason(),
             });
             return prev.filter((_, index) => index !== randomIndex)
         });
