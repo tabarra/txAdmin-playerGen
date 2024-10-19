@@ -11,14 +11,15 @@ const getRandomElement = (arr: any[]) => arr[Math.floor(Math.random() * arr.leng
  */
 const nums = '1234567890';
 const hex = '0123456789abcdef';
-export const genDiscord = customAlphabet(nums, 18);
+export const genDiscord = customAlphabet(nums, 17); //it's 18, but we're adding a 9 in front of it
 export const genFivem = customAlphabet(nums, 7);
 export const genLicense = customAlphabet(hex, 40);
 export const genLive = customAlphabet(nums, 15);
 export const genSteam = customAlphabet(hex, 8);
 export const genXbl = customAlphabet(nums, 16);
 const identifierGenerators = [
-    () => { return 'discord:' + genDiscord() },
+    //prefixing discord with 9 just so it's clear in the db who are the fake players
+    () => { return 'discord:9' + genDiscord() },
     () => { return 'fivem:' + genFivem() },
     () => { return 'license2:' + genLicense() },
     () => { return 'live:' + genLive() },
